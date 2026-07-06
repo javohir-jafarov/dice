@@ -43,10 +43,46 @@ let animation = () => {
 
 window.addEventListener('click', randomDice())
 window.addEventListener('click', animation())
-
-window.addEventListener('click', randomDice())
-window.addEventListener('click', animation())
+window.addEventListener('click', startShakeDetection)
 
 
+
+
+async function startShakeDetection() {
+  // iOS (iPhone) uchun ruxsat so'rash
+  if (typeof DeviceMotionEvent.requestPermission === 'function') {
+    try {
+      const permission = await DeviceMotionEvent.requestPermission();
+      if (permission !== 'granted') {
+        alert('Sensorga ruxsat berilmadi!');
+        return;
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  let lastX = null, lastY = null, lastZ = null;
+  const threshold = 15; 
+
+  window.addEventListener('devicemotion', (event) => {
+    let { x, y, z } = event.accelerationIncludingGravity;
+    if (lastX === null) { lastX = x; lastY = y; lastZ = z; return; }
+
+    let deltaX = Math.abs(lastX - x);
+    let deltaY = Math.abs(lastY - y);
+    let deltaZ = Math.abs(lastZ - z);
+
+    // Agar silkinish sezilsa:
+    if ((deltaX > threshold && deltaY > threshold) || deltaZ > threshold) {
+      randomDice(), animation()
+      
+      // Boyagi aylanadigan divga animatsiya qo'shish:
+      
+    }
+
+    lastX = x; lastY = y; lastZ = z;
+  });
+}
 
 
