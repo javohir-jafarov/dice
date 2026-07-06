@@ -5,9 +5,22 @@ const rollBtn = document.getElementById('rollBtn')
 const max = 6 + 1
 const min = 1
 
-let randomNum1 = Math.floor(Math.random() * (max - min) + min)
-let randomNum2 = Math.floor(Math.random() * (max - min) + min)
+let randomNum1;
+let randomNum2;
+
+ 
+
+window.addEventListener('click', function() {
+    randomNum1 = Math.floor(Math.random() * (max - min) + min)
+    randomNum2 = Math.floor(Math.random() * (max - min) + min)
 
 
 
-console.log(randomNum1, randomNum2)
+    dice1.innerHTML = `<img src="./assets/images/${randomNum1}.png">`
+    dice2.innerHTML = `<img src="./assets/images/${randomNum2}.png">`
+    
+})
+
+
+
+

@@ -16,3 +16,11 @@ body{
     color: #fff;
 }
 
+.dices{
+    display: flex;
+    gap: 100px;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
