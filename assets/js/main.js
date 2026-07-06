@@ -41,8 +41,10 @@ let animation = () => {
     }, 100)
 }
 
-window.addEventListener('click', randomDice())
-window.addEventListener('click', animation())
+window.addEventListener('click', randomDice)
+window.addEventListener('click', animation)
+
+
 window.addEventListener('click', startShakeDetection)
 
 
