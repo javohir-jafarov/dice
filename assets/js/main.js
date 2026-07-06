@@ -2,24 +2,50 @@ const dice1 = document.getElementById('dice1')
 const dice2 = document.getElementById('dice2')
 const rollBtn = document.getElementById('rollBtn')
 
-const max = 6 + 1
-const min = 1
+const maxNum = 6 + 1
+const minNum = 1
 
 let randomNum1;
 let randomNum2;
 
- 
+const maxDeg = 179 + 1
+const minDeg = 1
 
-window.addEventListener('click', function() {
-    randomNum1 = Math.floor(Math.random() * (max - min) + min)
-    randomNum2 = Math.floor(Math.random() * (max - min) + min)
+ let randomDice = () => {
+    randomNum1 = Math.floor(Math.random() * (maxNum - minNum) + minNum)
+    randomNum2 = Math.floor(Math.random() * (maxNum - minNum) + minNum)
 
 
 
     dice1.innerHTML = `<img src="./assets/images/${randomNum1}.png">`
     dice2.innerHTML = `<img src="./assets/images/${randomNum2}.png">`
     
-})
+}
+let animation = () => {
+
+    dice1.style.opacity = '0'
+    dice2.style.opacity = '0'
+
+    dice1.style.transform = `scale(10)`
+    dice2.style.transform = `scale(10)`
+
+
+    setTimeout(() => {
+        dice1.style.opacity = '1'
+        dice2.style.opacity = '1'
+
+
+
+        dice1.style.transform = `rotate(${Math.floor(Math.random() * (maxDeg - minDeg) + minDeg)}deg)`
+    dice2.style.transform = `rotate(${Math.floor(Math.random() * (maxDeg - minDeg) + minDeg)}deg)`
+    }, 100)
+}
+
+window.addEventListener('click', randomDice())
+window.addEventListener('click', animation())
+
+window.addEventListener('click', randomDice())
+window.addEventListener('click', animation())
 
 
 

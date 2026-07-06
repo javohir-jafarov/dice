@@ -18,9 +18,18 @@ body{
 
 .dices{
     display: flex;
-    gap: 100px;
+    gap: 50px;
     height: 100vh;
     align-items: center;
     justify-content: center;
 }
 
+.dices .dice img{
+    width: 100px;
+    height: 100px;
+}
+
+.dices .dice{
+    transform: scale(2);
+    transition: .34s transform;
+}
