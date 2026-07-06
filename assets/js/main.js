@@ -49,7 +49,6 @@ window.addEventListener('click', startShakeDetection)
 
 
 async function startShakeDetection() {
-  // iOS (iPhone) uchun ruxsat so'rash
   if (typeof DeviceMotionEvent.requestPermission === 'function') {
     try {
       const permission = await DeviceMotionEvent.requestPermission();
@@ -73,11 +72,10 @@ async function startShakeDetection() {
     let deltaY = Math.abs(lastY - y);
     let deltaZ = Math.abs(lastZ - z);
 
-    // Agar silkinish sezilsa:
+    
     if ((deltaX > threshold && deltaY > threshold) || deltaZ > threshold) {
       randomDice(), animation()
       
-      // Boyagi aylanadigan divga animatsiya qo'shish:
       
     }
 
