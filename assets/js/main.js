@@ -11,6 +11,10 @@ let randomNum2;
 const maxDeg = 179 + 1
 const minDeg = 1
 
+let alertCount = 0
+
+alert('tap!')
+
  let randomDice = () => {
     randomNum1 = Math.floor(Math.random() * (maxNum - minNum) + minNum)
     randomNum2 = Math.floor(Math.random() * (maxNum - minNum) + minNum)
@@ -44,7 +48,9 @@ let animation = () => {
 window.addEventListener('click', randomDice)
 window.addEventListener('click', animation)
 
-
+setTimeout(() => {
+  alert('shake your phone!')
+}, 2000)
 window.addEventListener('click', startShakeDetection)
 
 
